@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "lilium-external-command-demo",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-05-16",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "routes": [
+    {
+      "pattern": "calc-demo.kuma.homes",
+      "custom_domain": true
+    }
+  ],
+  "vars": {
+    "LILIUM_COMMAND_CONFIG_ID": "calc"
+  }
+}

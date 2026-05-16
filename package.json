@@ -1,0 +1,21 @@
+{
+  "name": "lilium-external-command-demo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "cf-typegen": "wrangler types",
+    "check": "npm run cf-typegen && npm run typecheck && npm test && npm run wrangler:check",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev --port 8787",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "wrangler:check": "wrangler deploy --dry-run"
+  },
+  "devDependencies": {
+    "@types/node": "^25.8.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.6",
+    "wrangler": "^4.92.0"
+  }
+}
