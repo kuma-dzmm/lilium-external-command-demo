@@ -53,17 +53,16 @@ external_commands:
 
     external:
       mode: stateless
-      endpoint: https://calc-demo.kuma.homes/calc
+      endpoint: https://calc-demo.kuma.homes/api/lilium/external-commands/v1/calc/invoke
       timeout_ms: 30000
       shared_secret: "replace-with-the-same-secret-used-by-worker"
 ```
 
 ## Deploy
 
-```bash
-npx wrangler secret put LILIUM_SHARED_SECRET
-npm run deploy
-```
+Push `main` to deploy through the Cloudflare-connected repository. Use
+`npx wrangler secret put LILIUM_SHARED_SECRET` only when rotating the Worker
+secret.
 
 `LILIUM_COMMAND_CONFIG_ID` defaults to `calc` in `wrangler.jsonc`.
 

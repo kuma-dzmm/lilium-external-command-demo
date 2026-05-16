@@ -7,6 +7,8 @@ import {
 
 const API_VERSION = "lilium.external-command.v1";
 const DEFAULT_CONFIG_ID = "calc";
+const CALC_COMMAND_INVOKE_PATH =
+  "/api/lilium/external-commands/v1/calc/invoke";
 const MAX_BODY_BYTES = 64 * 1024;
 
 type RuntimeEnv = Env & {
@@ -43,7 +45,7 @@ export async function handleRequest(request: Request, env: RuntimeEnv): Promise<
   if (request.method === "GET" && url.pathname === "/healthz") {
     return json({ ok: true });
   }
-  if (url.pathname !== "/calc") {
+  if (url.pathname !== CALC_COMMAND_INVOKE_PATH) {
     return json({ error: "not found" }, 404);
   }
   if (request.method !== "POST") {

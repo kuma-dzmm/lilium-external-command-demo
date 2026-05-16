@@ -46,7 +46,7 @@ function envelope(args: string) {
 describe("handleRequest", () => {
   it("returns a Lilium command result for signed calc invocations", async () => {
     const request = await createSignedCalcRequest(
-      "https://worker.example.com/calc",
+      "https://worker.example.com/api/lilium/external-commands/v1/calc/invoke",
       SHARED_SECRET,
       envelope("1 + 2 * (3 + 4)"),
     );
@@ -72,7 +72,7 @@ describe("handleRequest", () => {
 
   it("returns rejected command result for invalid expressions", async () => {
     const request = await createSignedCalcRequest(
-      "https://worker.example.com/calc",
+      "https://worker.example.com/api/lilium/external-commands/v1/calc/invoke",
       SHARED_SECRET,
       envelope("1 / 0"),
     );
@@ -87,7 +87,7 @@ describe("handleRequest", () => {
 
   it("rejects requests when the signed body is changed", async () => {
     const request = await createSignedCalcRequest(
-      "https://worker.example.com/calc",
+      "https://worker.example.com/api/lilium/external-commands/v1/calc/invoke",
       SHARED_SECRET,
       envelope("1 + 2"),
     );
